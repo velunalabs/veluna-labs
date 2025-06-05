@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import type { CalendarProps } from "./type";
 
-
-
 const Calendar: React.FC<CalendarProps> = ({
   events,
   startAccessor,
@@ -17,7 +15,10 @@ const Calendar: React.FC<CalendarProps> = ({
   const [selectedDay, setSelectedDay] = useState<Moment | null>(null);
 
   const startDate = moment(currentDate).startOf("month").startOf("week");
-  const endDate = moment(currentDate).endOf("month").endOf("week").add(1, "day");
+  const endDate = moment(currentDate)
+    .endOf("month")
+    .endOf("week")
+    .add(1, "day");
   const today = moment();
 
   const days: Moment[] = [];
@@ -53,7 +54,7 @@ const Calendar: React.FC<CalendarProps> = ({
     <div className="flex flex-col lg:flex-row gap-4 mt-5 w-full">
       {/* Calendar Section */}
       <motion.div
-        className="w-full lg:w-2/3 bg-white p-3 sm:p-4 md:p-6 rounded-xl shadow-md border"
+        className="w-full lg:w-2/3 bg-white p-3 sm:p-4 md:p-6 rounded-xl shadow-md border border-gray-200"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
@@ -79,7 +80,7 @@ const Calendar: React.FC<CalendarProps> = ({
           <div className="flex gap-2 sm:gap-3">
             <motion.button
               onClick={handlePrevMonth}
-              className="bg-white border p-1.5 sm:p-2 rounded-full hover:bg-gray-50"
+              className="bg-white border border-gray-200 p-1.5 sm:p-2 rounded-full hover:bg-gray-50"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -87,7 +88,7 @@ const Calendar: React.FC<CalendarProps> = ({
             </motion.button>
             <motion.button
               onClick={handleNextMonth}
-              className="bg-white border p-1.5 sm:p-2 rounded-full hover:bg-gray-50"
+              className="bg-white border border-gray-200 p-1.5 sm:p-2 rounded-full hover:bg-gray-50"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -109,7 +110,10 @@ const Calendar: React.FC<CalendarProps> = ({
             const dayEvents = events.filter(
               (e) =>
                 moment(e[startAccessor]).isSameOrBefore(day, "day") &&
-                moment(e[endAccessor] || e[startAccessor]).isSameOrAfter(day, "day")
+                moment(e[endAccessor] || e[startAccessor]).isSameOrAfter(
+                  day,
+                  "day"
+                )
             );
             const isCurrentMonth = day.isSame(currentDate, "month");
             const isSelected = selectedDay?.isSame(day, "day");
@@ -121,15 +125,17 @@ const Calendar: React.FC<CalendarProps> = ({
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`relative p-1 h-12 xs:h-16 sm:h-20 md:h-24 lg:h-28 w-full text-start cursor-pointer rounded-lg sm:rounded-xl flex flex-col border ${
-                  isToday(day) ? "border-primary" : "border-gray-200"
-                } ${isCurrentMonth ? "bg-gray-50" : "bg-gray-100/50 text-gray-400"} ${
-                  isSelected ? "ring-2 ring-primary/30 border-primary" : ""
+                  isToday(day) ? "border-blue-500" : "border-gray-200"
+                } ${
+                  isCurrentMonth ? "bg-gray-50" : "bg-gray-100/50 text-gray-400"
+                } ${
+                  isSelected ? "ring-2 ring-blue-500/30 border-blue-500" : ""
                 } hover:bg-gray-100`}
               >
                 <div className="font-medium md:p-2">
                   <span
                     className={`text-xs md:text-sm ${
-                      isSelected ? "text-primary" : "border-gray-200"
+                      isSelected ? "text-blue-500" : "border-gray-200"
                     }`}
                   >
                     {day.format("D")}
@@ -164,12 +170,12 @@ const Calendar: React.FC<CalendarProps> = ({
 
       {/* Side Panel */}
       <motion.div
-        className="w-full lg:w-1/3 bg-white p-4 rounded-xl shadow-md border"
+        className="w-full lg:w-1/3 bg-white p-4 rounded-xl shadow-md border border-gray-200"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="border-b mb-3 pb-2 flex justify-between items-center">
+        <div className="border-b border-gray-200 mb-3 pb-2 flex justify-between items-center">
           <h3 className="text-md font-semibold text-gray-700">
             {(selectedDay || today).format("dddd, MMMM D YYYY")}
           </h3>
@@ -177,9 +183,11 @@ const Calendar: React.FC<CalendarProps> = ({
             <select
               value={currentDate.month()}
               onChange={(e) =>
-                setCurrentDate(currentDate.clone().month(Number(e.target.value)))
+                setCurrentDate(
+                  currentDate.clone().month(Number(e.target.value))
+                )
               }
-              className="rounded-xl p-2 border text-gray-700"
+              className="rounded-xl p-2 border border-gray-200 text-gray-700"
             >
               {moment.months().map((month, idx) => (
                 <option key={idx} value={idx}>
@@ -192,15 +200,16 @@ const Calendar: React.FC<CalendarProps> = ({
               onChange={(e) =>
                 setCurrentDate(currentDate.clone().year(Number(e.target.value)))
               }
-              className="rounded-xl p-2 border text-gray-700"
+              className="rounded-xl p-2 border border-gray-200 text-gray-700"
             >
-              {Array.from({ length: 100 }, (_, i) => moment().year() - 10 + i).map(
-                (year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                )
-              )}
+              {Array.from(
+                { length: 100 },
+                (_, i) => moment().year() - 10 + i
+              ).map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -208,7 +217,10 @@ const Calendar: React.FC<CalendarProps> = ({
         <div className="py-3">
           {events.some(
             (e) =>
-              moment(e[startAccessor]).isSameOrBefore(selectedDay || today, "day") &&
+              moment(e[startAccessor]).isSameOrBefore(
+                selectedDay || today,
+                "day"
+              ) &&
               moment(e[endAccessor] || e[startAccessor]).isSameOrAfter(
                 selectedDay || today,
                 "day"
@@ -228,9 +240,12 @@ const Calendar: React.FC<CalendarProps> = ({
               )
               .map((event, idx) => renderContent(event, idx))
           ) : (
-            <p className="text-sm text-gray-500">
-              No events scheduled. <br />
-              <span className="font-semibold">Time for a break ☕️</span>
+            <p className="text-center text-gray-400 text-base">
+              🎉 No upcoming events!
+              <br />
+              <span className="font-semibold text-gray-600">
+                Enjoy your free time ☕️✨
+              </span>
             </p>
           )}
         </div>
