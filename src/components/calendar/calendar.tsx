@@ -157,7 +157,7 @@ const Calendar: React.FC<CalendarProps> = ({
                     </motion.span>
                   ))}
                   {dayEvents.length > 1 && (
-                    <span className="text-xs text-blue-500 hidden md:flex">
+                    <span className="text-xs text-blue-600 hidden md:flex">
                       + {dayEvents.length - 1} more
                     </span>
                   )}
