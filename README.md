@@ -1,12 +1,16 @@
-# Veluna Labs UI
+# Veluna Labs
 
-A modern and lightweight React component library built with **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**.
+**Veluna Labs** is a modern UI component library focused on flexibility, clean design, and developer experience. Built with performance and simplicity in mind, it helps you rapidly build polished user interfaces.
 
-Veluna Labs focuses on delivering reusable, accessible, and well-animated UI components for modern frontend applications.
+## ✨ Features
+
+- 📦 Ready-to-use UI components
+- 🎨 Customizable and theme-friendly
+- ⚡ Lightweight and fast
+- 🧩 Modular and tree-shakable
+- 📘 Written in TypeScript with full type definitions
 
 ## 🚀 Installation
 
 ```bash
 npm install veluna-labs
-# or
-yarn add veluna-labs
