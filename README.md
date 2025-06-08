@@ -1,7 +1,8 @@
 
-🌟 **Veluna Labs**
+🌟 **Veluna UI**
 -
-Veluna Labs is a modern UI component library focused on flexibility, clean design, and developer experience. Built with performance and simplicity in mind, it helps you rapidly build polished user interfaces — fully compatible with Tailwind CSS v4.
+Veluna UI is a modern UI component library focused on flexibility, clean design, and developer experience. Built with performance and simplicity in mind, it helps you rapidly build polished user interfaces — fully compatible with Tailwind CSS v4.
+Developed and maintained by Veluna Labs.
 
 ✨ Features
 📦 Ready-to-use UI components
@@ -16,13 +17,13 @@ Veluna Labs is a modern UI component library focused on flexibility, clean desig
 
 Installation (Step-by-Step)
 -
-**🔹 Step 1: Install Veluna Labs
+**🔹 Step 1: Install Veluna UI
 Install the component library using npm:**
 
 ```bash
-npm install veluna-labs
+npm install veluna-ui
 ```
-⚠️ Important: Veluna Labs depends on Tailwind CSS v4.
+⚠️ Important: Veluna UI depends on Tailwind CSS v4.
 If Tailwind is not installed in your project, follow the official guide here:
 👉 [Tailwind CSS Installation – v4 Docs](https://tailwindcss.com/docs/installation)
 
@@ -32,5 +33,5 @@ Add the following to your index.css (or global CSS file):**
 ```bash
 @import "tailwindcss";
 
-@source "../node_modules/veluna-labs";
+@source "../node_modules/veluna-ui";
 ```
